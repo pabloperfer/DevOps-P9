@@ -1,7 +1,7 @@
 name: Stage the app
 
 env: 
-  DOCKER_IMAGE_NAME: pabloperfer-azure-ttt
+  DOCKER_IMAGE_NAME: pabloperfer-azure-tt
   IMAGE_REGISTRY_URL: docker.pkg.github.com
   AZURE_WEBAPP_NAME: pabloperfer-ttt-app
 
@@ -41,7 +41,7 @@ jobs:
       - name: create image and store in Packages
         uses: mattdavis0351/actions/docker-gpr@1.3.0
         with:
-          repo-token: ${{secrets.GITHUB_TOKEB}}
+          repo-token: ${{secrets.REGISTRY_PASSWORD}}
           image-name: ${{env.DOCKER_IMAGE_NAME}}
 
   Deploy-to-Azure:
