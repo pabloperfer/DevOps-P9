@@ -54,7 +54,8 @@ jobs:
         with:
           creds: ${{secrets.AZURE_CREDENTIALS}}
 
-      - uses: azure/docker-login@v1
+      - name: "login registry"
+        uses: azure/docker-login@v1
         with:
           login-server: ${{env.IMAGE_REGISTRY_URL}}
           username: pabloperfer
