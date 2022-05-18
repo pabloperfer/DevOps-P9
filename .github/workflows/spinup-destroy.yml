@@ -26,7 +26,7 @@ jobs:
       - name: Azure login
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.Azure_CREDENTIALS }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
           
       - name: Create Azure resource group
         if: success()
@@ -37,4 +37,15 @@ jobs:
         if: success()
         run: |
           az appservice plan create --resource-group ${{env.AZURE_RESOURCE_GROUP}} --name ${{env.AZURE_APP_PLAN}} --is-linux sky F1 --subscription ${{secrets.AZURE_SUBSCRIPTION_ID}}
+          
+      - name: Create webapp resource
+        if: success()
+        run: |
+          az webapp create --resource-group ${{env.AZURE_RESOURCE_GROUP}} --plan ${{env.AZURE_APP_PLAN}} -name ${{env.AZURE_WEBAPP_NAME}} --deployment-container-image-name nginx --subscription ${{secrets.AZURE_SUBSCRIPTION_ID}}
+          
+      - name: Configure webapp to use Github Packages
+        if: success()
+        run: |
+          az webapp config container set --docker-custom-image nginx --docker-registry-server-password ${{secrets.REGISTRY_PASSWORD}} --docker-registry-server-url https://docker.pkg.github.com --docker-registry-server-user ${{github.actor}} --name ${{env.AZURE_WEBAPP_NAME}} --resource-group  ${{env.AZURE_RESOURCE_GROUP}} --subscription ${{secrets.AZURE_SUBSCRIPTION_ID}}
+      
           
