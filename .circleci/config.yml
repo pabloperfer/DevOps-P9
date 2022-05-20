@@ -40,5 +40,6 @@ workflows:
       - docker/publish:
           docker-username: DOCKER_USER 
           dockerfile: Dockerfile 
-          image: pablocirclecitest 
+          image: circlecipablo
           docker-password: DOCKERHUB_PASSWORD
+          tag: latest
