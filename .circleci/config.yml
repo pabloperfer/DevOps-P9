@@ -26,6 +26,11 @@ jobs:
       - run:
           name: Run tests
           command: npm install && npm test 
+  docker-publish:
+    docker-username: DOCKER_USER 
+    dockerfile: Dockerfile 
+    image: circlecipablo
+    docker-password: DOCKERHUB_PASSWORD
 
 workflows:
   # Below is the definition of your workflow.
@@ -35,11 +40,9 @@ workflows:
   sample:
     jobs:
       - build-and-test
+      - docker-publish:
+          requires:
+            - build-and-test
       # For running simple node tests, you could optionally use the node/test job from the orb to replicate and replace the job above in fewer lines.
       # - node/test
-      - docker/publish:
-          docker-username: DOCKER_USER 
-          dockerfile: Dockerfile 
-          image: circlecipablo
-          docker-password: DOCKERHUB_PASSWORD
-          registry: index.docker.io/v2/pabloli150
+     
