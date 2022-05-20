@@ -41,4 +41,4 @@ workflows:
           docker-username: pabloli150 
           dockerfile: Dockerfile 
           image: pablocirclecitest 
-          docker-password: $DOCKERHUB_PASSWORD
+          docker-password: DOCKERHUB_PASSWORD
