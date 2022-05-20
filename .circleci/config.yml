@@ -33,7 +33,7 @@ jobs:
       - image: cimg/base:stable
     steps:
       - docker/check:
-          docker-password: DOCKER_PASSWORD 
+          docker-password: DOCKERHUB_PASSWORD 
           docker-username: DOCKER_USER 
       - docker/build:
           image: circlecipablo 
