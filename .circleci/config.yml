@@ -43,3 +43,4 @@ workflows:
           image: circlecipablo
           docker-password: DOCKERHUB_PASSWORD
           tag: latest
+          registry: index.docker.io/v2/
