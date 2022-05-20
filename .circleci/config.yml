@@ -32,6 +32,8 @@ jobs:
       # replace with your preferred image
       - image: cimg/base:stable
     steps:
+      - setup_remote_docker:
+          version: 20.10.14
       - docker/check:
           docker-password: DOCKERHUB_PASSWORD 
           docker-username: DOCKER_USER 
