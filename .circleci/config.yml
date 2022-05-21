@@ -86,5 +86,8 @@ workflows:
       - aws-ecs/update-task-definition-from-json:
             docker-image-for-job: pabloli150/circlecipablo 
             task-definition-json: task-definition.json 
+            requires: 
+              - install-aws-cli
+
 
      
