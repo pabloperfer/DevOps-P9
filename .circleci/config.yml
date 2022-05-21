@@ -83,5 +83,7 @@ workflows:
       -  aws-ecs/update-task-definition:
            docker-image-for-job: pabloli150/circlecipablo:testing 
            family: CircleCIWebApp 
+           requires:
+             - docker-login-build-push
 
      
