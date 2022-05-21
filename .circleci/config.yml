@@ -85,7 +85,7 @@ workflows:
       - docker-login-build-push:
           requires:
             - build-and-test
-      -  update-ecs-task:
+      -  update-ecs-container:
           requires:
             - docker-login-build-push
 
