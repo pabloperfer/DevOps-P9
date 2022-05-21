@@ -47,9 +47,11 @@ jobs:
           dockerfile: Dockerfile
           image: pabloli150/circlecipablo 
           step-name: Docker build 
+          tag: latest
       - docker/push:
           image: pabloli150/circlecipablo 
-          step-name: Docker push 
+          step-name: Docker push
+          tag: latest 
    
 workflows:
   # Below is the definition of your workflow.
