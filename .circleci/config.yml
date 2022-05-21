@@ -69,6 +69,7 @@ jobs:
           task-definition-json: task-definition.json
       - aws-ecs/run-task:
             assign-public-ip: DISABLED 
+            awsvpc: true
             cluster: CircleCICluster 
             task-definition: CircleCIWebApp:6 
             group: CircleCIWebApp 
