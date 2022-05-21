@@ -45,10 +45,10 @@ jobs:
           docker-username: DOCKER_USER 
       - docker/build:
           dockerfile: Dockerfile
-          image: circlecipablo 
+          image: pabloli150/circlecipablo 
           step-name: Docker build 
       - docker/push:
-          image: circlecipablo 
+          image: pabloli150/circlecipablo 
           step-name: Docker push 
    
 workflows:
