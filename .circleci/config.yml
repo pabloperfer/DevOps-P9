@@ -57,21 +57,22 @@ jobs:
           step-name: Docker push
           tag: testing 
 
- 
-
-  update-ecs-task:
+  update-ecs-container:
     docker:
       - image: cimg/base:stable
     steps:
       - attach_workspace:
           at: .
-      - aws-cli/install
-      - aws-cli/setup
-      #- aws-ecs/update-task-definition:
-      #    family: CircleCIWebApp 
-      #    container-image-name-updates: pabloli150/circlecipablo:testing 
+                
       - aws-ecs/update-task-definition-from-json:
           task-definition-json: task-definition.json
+
+      - aws-ecs/run-task:
+            assign-public-ip: ENABLED 
+            cluster: CircleCIClusterUpdate  
+            task-definition: CircleCIWebApp:6 
+            group: CircleCIWebApp 
+            launch-type: EC2 
 
 workflows:
   # Below is the definition of your workflow.
