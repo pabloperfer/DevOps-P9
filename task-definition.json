@@ -2,9 +2,6 @@
     "containerDefinitions": [
         {
             "cpu": 256,
-            "repositoryCredentials": {
-                "credentialsParameter": "MyDockerPass"
-            },
             "image": "docker.io/pabloli150/circlecipablo:testing",
             "name": "CircleCIapp"
         }
