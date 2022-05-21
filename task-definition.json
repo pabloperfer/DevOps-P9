@@ -11,7 +11,5 @@
     "requiresCompatibilities": [
         "EC2"
     ],
-    "cpu": "256",
-    "executionRoleArn":"arn:aws:iam::488646421363:role/ecsTaskExecutionRole"
-
+    "cpu": "256"
 }
