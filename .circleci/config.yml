@@ -73,6 +73,8 @@ jobs:
             task-definition: CircleCIWebApp:6 
             group: CircleCIWebApp 
             launch-type: EC2 
+            subnet-ids: subnet-0580a00b316775fb5
+
 
 workflows:
   # Below is the definition of your workflow.
