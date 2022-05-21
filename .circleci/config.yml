@@ -38,6 +38,8 @@ jobs:
     steps:
       - setup_remote_docker:
           version: 20.10.14
+      - attach_workspace:
+          at: .
       - docker/check:
           docker-password: DOCKERHUB_PASSWORD 
           docker-username: DOCKER_USER 
@@ -45,11 +47,7 @@ jobs:
           dockerfile: Dockerfile
           image: circlecipablo 
           step-name: Docker build 
-      - attach_workspace:
-          at: .
-
-
-
+   
 workflows:
   # Below is the definition of your workflow.
   # Inside the workflow, you provide the jobs you want to run, e.g this workflow runs the build-and-test job above.
