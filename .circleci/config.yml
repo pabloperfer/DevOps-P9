@@ -68,13 +68,11 @@ jobs:
       - aws-ecs/update-task-definition-from-json:
           task-definition-json: task-definition.json
       - aws-ecs/run-task:
-            assign-public-ip: DISABLED 
-            awsvpc: false
             cluster: CircleCICluster 
-            group: CircleCIWebApp 
+            task-definition: CircleCIWebApp 
             launch-type: FARGATE 
-            #subnet-ids: subnet-0580a00b316775fb5
-            #security-group-ids: sg-07bb66cf2cee6f94f
+            subnet-ids: subnet-0580a00b316775fb5
+            security-group-ids: sg-07bb66cf2cee6f94f
 
 
 workflows:
