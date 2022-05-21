@@ -42,7 +42,7 @@ jobs:
           docker-password: DOCKERHUB_PASSWORD 
           docker-username: DOCKER_USER 
       - docker/build:
-          dockerfile: .
+          dockerfile: Dockerfile
           image: circlecipablo 
           step-name: Docker build 
       - attach_workspace:
