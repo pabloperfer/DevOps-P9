@@ -83,10 +83,8 @@ workflows:
       -  install-aws-cli:
           requires:
             - docker-login-build-push
-      -  aws-ecs/update-task-definition:
-           docker-image-for-job: pabloli150/circlecipablo:testing 
-           family: CircleCIWebApp 
-           requires:
-             - install-aws-cli
+      - aws-ecs/update-task-definition-from-json:
+            docker-image-for-job: pabloli150/circlecipablo 
+            task-definition-json: task-definition.json 
 
      
