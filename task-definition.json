@@ -1,4 +1,5 @@
 {
+    "networkMode": "awsvpc",
     "containerDefinitions": [
         {
             "cpu": 256,
