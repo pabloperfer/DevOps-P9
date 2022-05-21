@@ -58,12 +58,12 @@ jobs:
           tag: testing 
 
  
-#
-#  update-task-definition-ecs:
-#    docker:
-#      - image: cimg/base:stable
-#    steps:
-#      - aws-cli/install
+
+  install-aws-cli:
+    docker:
+      - image: cimg/base:stable
+    steps:
+       - aws-cli/install
 #      - aws-cli/setup
 #      - aws-ecs/update-task-definition:
 #          family: CircleCIWebApp 
@@ -80,10 +80,13 @@ workflows:
       - docker-login-build-push:
           requires:
             - build-and-test
+      -  install-aws-cli:
+          requires:
+            - docker-login-build-push
       -  aws-ecs/update-task-definition:
            docker-image-for-job: pabloli150/circlecipablo:testing 
            family: CircleCIWebApp 
            requires:
-             - docker-login-build-push
+             - install-aws-cli
 
      
