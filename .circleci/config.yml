@@ -63,6 +63,8 @@ jobs:
     docker:
       - image: cimg/base:stable
     steps:
+      - attach_workspace:
+          at: .
       - aws-cli/install
       - aws-cli/setup
       #- aws-ecs/update-task-definition:
