@@ -31,7 +31,7 @@ jobs:
           paths:
             - '*'
 
-  Docker-login-build:
+  Docker-login-build-push:
     docker:
       # replace with your preferred image
       - image: cimg/base:stable
@@ -47,6 +47,9 @@ jobs:
           dockerfile: Dockerfile
           image: circlecipablo 
           step-name: Docker build 
+      - docker/push:
+          image: circlecipablo 
+          step-name: Docker push 
    
 workflows:
   # Below is the definition of your workflow.
@@ -56,7 +59,7 @@ workflows:
   sample:
     jobs:
       - build-and-test
-      - Docker-login-build:
+      - Docker-login-build-push:
           requires:
             - build-and-test
 
