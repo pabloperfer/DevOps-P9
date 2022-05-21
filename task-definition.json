@@ -1,5 +1,5 @@
 {
-    "executionRoleArn": "arn:aws:iam::488646421363:role/ECSTaskRole",
+    "executionRoleArn": "arn:aws:iam::488646421363:role/ecsTaskExecutionRole",
     "containerDefinitions": [
         {
             "cpu": 256,
