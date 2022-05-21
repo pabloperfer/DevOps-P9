@@ -63,11 +63,10 @@ jobs:
     steps:
       - attach_workspace:
           at: .
-                
+      - aws-cli/install          
+      - aws-cli/setup
       - aws-ecs/update-task-definition-from-json:
           task-definition-json: task-definition.json
-      - attach_workspace:
-          at: .
       - aws-ecs/run-task:
             assign-public-ip: ENABLED 
             cluster: CircleCIClusterUpdate  
