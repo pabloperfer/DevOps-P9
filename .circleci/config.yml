@@ -26,6 +26,10 @@ jobs:
       - run:
           name: Run tests
           command: npm install && npm test 
+      - persist_to_workspace:
+          root: .
+          paths:
+            - '*'
 
   Docker-login-build:
     docker:
@@ -41,6 +45,9 @@ jobs:
           dockerfile: .
           image: circlecipablo 
           step-name: Docker build 
+      - attach_workspace:
+          at: .
+
 
 
 workflows:
