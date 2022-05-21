@@ -61,12 +61,8 @@ jobs:
     docker:
       - image: cimg/base:stable
     steps:
-      - attach_workspace:
-          at: .
       - aws-cli/install          
       - aws-cli/setup
-      - aws-ecs/update-task-definition-from-json:
-          task-definition-json: task-definition.json
       - aws-ecs/run-task:
             cluster: CircleCICluster 
             task-definition: CircleCIWebApp 
