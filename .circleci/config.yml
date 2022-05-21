@@ -73,7 +73,7 @@ jobs:
             cluster: CircleCICluster 
             task-definition: CircleCIWebApp:6 
             group: CircleCIWebApp 
-            launch-type: Fargate 
+            launch-type: FARGATE 
             #subnet-ids: subnet-0580a00b316775fb5
             #security-group-ids: sg-07bb66cf2cee6f94f
 
