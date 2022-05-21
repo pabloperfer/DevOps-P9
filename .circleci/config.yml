@@ -56,17 +56,19 @@ jobs:
           image: pabloli150/circlecipablo 
           step-name: Docker push
           tag: testing 
-  
-  update-task-definition-ecs:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - aws-cli/install
-      - aws-cli/setup
-      - aws-ecs/update-task-definition:
-          family: CircleCIWebApp 
-          container-image-name-updates: pabloli150/circlecipablo:testing 
 
+ 
+#
+#  update-task-definition-ecs:
+#    docker:
+#      - image: cimg/base:stable
+#    steps:
+#      - aws-cli/install
+#      - aws-cli/setup
+#      - aws-ecs/update-task-definition:
+#          family: CircleCIWebApp 
+#          container-image-name-updates: pabloli150/circlecipablo:testing 
+#"""
 workflows:
   # Below is the definition of your workflow.
   # Inside the workflow, you provide the jobs you want to run, e.g this workflow runs the build-and-test job above.
@@ -78,8 +80,8 @@ workflows:
       - docker-login-build-push:
           requires:
             - build-and-test
-      - update-task-definition-ecs:
-          requires:
-            - docker-login-build-push
+      -  aws-ecs/update-task-definition:
+           docker-image-for-job: pabloli150/circlecipablo:testing 
+           family: CircleCIWebApp 
 
      
