@@ -49,7 +49,7 @@ jobs:
           dockerfile: Dockerfile
           image: pabloli150/circlecipablo 
           step-name: Docker build 
-          tag: latest
+          tag: testing
       - docker/push:
           image: pabloli150/circlecipablo 
           step-name: Docker push
