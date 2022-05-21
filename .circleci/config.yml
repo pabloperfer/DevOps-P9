@@ -59,16 +59,18 @@ jobs:
 
  
 
-  install-aws-cli:
+  update-ecs-task:
     docker:
       - image: cimg/base:stable
     steps:
-       - aws-cli/install
-#      - aws-cli/setup
-#      - aws-ecs/update-task-definition:
-#          family: CircleCIWebApp 
-#          container-image-name-updates: pabloli150/circlecipablo:testing 
-#"""
+      - aws-cli/install
+      - aws-cli/setup
+      #- aws-ecs/update-task-definition:
+      #    family: CircleCIWebApp 
+      #    container-image-name-updates: pabloli150/circlecipablo:testing 
+      - aws-ecs/update-task-definition-from-json:
+          task-definition-json: task-definition.json
+
 workflows:
   # Below is the definition of your workflow.
   # Inside the workflow, you provide the jobs you want to run, e.g this workflow runs the build-and-test job above.
@@ -80,14 +82,10 @@ workflows:
       - docker-login-build-push:
           requires:
             - build-and-test
-      -  install-aws-cli:
+      -  update-ecs-task:
           requires:
             - docker-login-build-push
-      - aws-ecs/update-task-definition-from-json:
-            docker-image-for-job: pabloli150/circlecipablo 
-            task-definition-json: task-definition.json 
-            requires: 
-              - install-aws-cli
+
 
 
      
