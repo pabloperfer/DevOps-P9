@@ -2,7 +2,7 @@
     "executionRoleArn": "arn:aws:iam::488646421363:role/ECSTaskRole",
     "containerDefinitions": [
         {
-            "cpu": 0,
+            "cpu": 256,
             "repositoryCredentials": {
                 "credentialsParameter": "MyDockerPass"
             },
@@ -11,7 +11,6 @@
         }
     ],
     "memory": "512",
-    "taskRoleArn": "arn:aws:iam::488646421363:role/ECSTaskRole",
     "family": "CircleCIWebApp",
     "requiresCompatibilities": [
         "EC2"
